@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="/Css/Authorization/registration.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+<div class="background-overlay"></div>
+<div class="register-container">
+  <div class="register-header">
+    <h2>Создайте Аккаунт</h2>
+    <p>Присоединяйтесь к нашему ПК Клубу!</p>
+  </div>
+
+  <div class="social-register">
+    <button class="social-button facebook">
+      <i class="fab fa-facebook-f"></i> Зарегистрироваться с Facebook
+    </button>
+    <button class="social-button google">
+      <i class="fab fa-google"></i> Зарегистрироваться с Google
+    </button>
+  </div>
+
+  <div class="divider"><span>или</span></div>
+
+  <form id="registerForm" class="register-form" th:action="@{/auth/register}" th:object="${user}" method="post">
+    <div th:if="${errorMessage}" style="color: red; margin-bottom: 10px; text-align: center;">
+      <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="login">Имя пользователя</label>
+      <input type="text" id="login" th:field="*{login}" placeholder="Введите имя" required />
+      <span class="error-message" id="loginError"></span>
+    </div>
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" th:field="*{email}" placeholder="Введите email" required />
+      <span class="error-message" id="emailError"></span>
+    </div>
+    <div class="input-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" th:field="*{password}" placeholder="Пароль" required />
+      <span class="error-message" id="passwordError"></span>
+    </div>
+    <div class="input-group">
+      <label for="confirmPassword">Повторите пароль</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Повторите пароль" required />
+      <span class="error-message" id="confirmPasswordError"></span>
+    </div>
+
+    <div class="input-group">
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" th:field="*{phone}" placeholder="Введите телефон" required /> <span class="error-message" id="phoneError"></span>
+    </div>
+    <div class="input-group">
+      <label for="fullName">Полное имя</label>
+      <input type="text" id="fullName" th:field="*{fullName}" placeholder="Введите полное имя" required /> <span class="error-message" id="fullNameError"></span>
+    </div>
+
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="terms" required />
+      <label for="terms">Я согласен с <a href="#" class="terms-link">условиями использования</a></label>
+    </div>
+
+    <button type="submit" class="submit-button">Зарегистрироваться</button>
+  </form>
+  <div class="login-link">
+    Уже есть аккаунт? <a th:href="@{/auth/login}">Войти</a>
+  </div>
+</div>
+</body>
+</html>

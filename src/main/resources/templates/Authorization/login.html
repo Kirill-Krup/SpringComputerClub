@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в ПК Клуб</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Css/Authorization/login.css">
+</head>
+<body>
+<div class="background-overlay"></div>
+<div class="login-container">
+    <div class="login-header">
+        <h2>Вход</h2>
+        <p>Добро пожаловать в мир игр!</p>
+    </div>
+
+    <div class="social-login">
+        <button class="social-button facebook">
+            <i class="fab fa-facebook-f"></i> Войти с Facebook
+        </button>
+        <button class="social-button google">
+            <i class="fab fa-google"></i> Войти с Google
+        </button>
+    </div>
+
+    <div class="divider">
+        <span>или</span>
+    </div>
+
+    <form id="loginForm" class="login-form" method="post" th:action="@{/login}">
+        <div class="input-group">
+            <label for="username">Имя пользователя / Email</label>
+            <input type="text" id="username" name="username" placeholder="Введите ваше имя пользователя или email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="rememberMe" name="remember-me">
+            <label for="rememberMe">Запомнить меня</label>
+        </div>
+        <button type="submit" class="submit-button">Войти</button>
+    </form>
+
+
+    <div class="signup-link">
+        Не зарегистрированы? <a th:href="@{/auth/registration}">Зарегистрироваться сейчас</a>
+    </div>
+</div>
+</body>
+</html>

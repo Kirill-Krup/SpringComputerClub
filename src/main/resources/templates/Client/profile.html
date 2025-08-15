@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/Css/Client/profile.css" />
+</head>
+<body>
+
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="/home">
+                <i class="fas fa-gamepad"></i><span class="logo-accent">Кибер Арена</span>
+            </a>
+        </div>
+
+        <div class="main-nav-and-profile">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/home#about">О нас</a></li>
+                    <li><a href="/home#services">Услуги</a></li>
+                    <li><a href="/home#equipment">Оборудование</a></li>
+                    <li><a href="/home#pricing">Цены</a></li>
+                    <li><a href="/home#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<main class="profile-wrapper">
+    <section class="profile-page">
+        <div class="profile-header">
+            <div class="profile-photo-wrapper">
+                <img class="profile-photo"
+                     th:src="${user.getPhotoPath()}"
+                     alt="Фото профиля"/>
+            </div>
+            <div class="profile-title">
+                <h1 class="profile-name" th:text = "${user.getLogin()}"></h1>
+                <div class="profile-balance" th:text = "'Баланс:   ' + ${user.getWallet()} + ' BYN'"></div>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <div class="profile-info-item">
+                <label><i class="fa-solid fa-user"></i> Имя пользователя</label>
+                <div class="value" th:text = "${user.getFullName()}"></div>
+            </div>
+
+            <div class="profile-info-item">
+                <label><i class="fa-solid fa-phone"></i> Номер телефона</label>
+                <div class="value" th:text = "${user.getPhone()}"></div>
+            </div>
+
+            <div class="profile-info-item">
+                <label><i class="fa-solid fa-envelope"></i> Почта</label>
+                <div class="value" th:text = "${user.getEmail()}"></div>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a class="btn-edit" href="/profile/edit">
+                <i class="fa-solid fa-pen"></i> Редактировать профиль
+            </a>
+            <a class="btn-topup" href="/profile/replenishment">
+                <i class="fa-solid fa-wallet"></i> Пополнить кошелёк
+            </a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

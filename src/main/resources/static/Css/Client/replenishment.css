@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f1116;
+    color: #fff;
+}
+
+.main-header {
+    background-color: #1b1e27;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    color: #fff;
+}
+
+.logo-accent {
+    color: #00d9ff;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.wallet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+}
+
+.wallet-card {
+    background-color: #1b1e27;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    width: 350px;
+}
+
+.wallet-card h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #00d9ff;
+}
+
+.wallet-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.wallet-form label {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.wallet-form input,
+.wallet-form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: #0f1116;
+    color: #fff;
+    font-size: 14px;
+    transition: border 0.2s;
+    border: 1px solid #2c2f3a;
+}
+
+.wallet-form input:focus,
+.wallet-form select:focus {
+    border-color: #00d9ff;
+}
+
+.top-up-btn {
+    background-color: #00d9ff;
+    color: #0f1116;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.top-up-btn:hover {
+    background-color: #00b5d9;
+}

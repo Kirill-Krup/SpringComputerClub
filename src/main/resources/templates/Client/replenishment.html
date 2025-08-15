@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пополнение кошелька</title>
+    <link rel="stylesheet" href="/Css/Client/replenishment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="/profile">
+                <i class="fas fa-gamepad"></i><span class="logo-accent">Кибер Арена</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="wallet-container">
+    <div class="wallet-card">
+        <h2>Пополнение кошелька</h2>
+        <div class="current-balance">
+            Ваш баланс: <span th:text="${user.getWallet() + ' BYN'}"></span>
+        </div>
+
+        <form th:action="@{/profile/replenishment/top-up}" method="post" class="wallet-form">
+            <label for="amount">Сумма пополнения (BYN)</label>
+            <input type="number" id="amount" name="amount" min="1" step="0.01" required>
+
+            <label for="payment-method">Способ оплаты</label>
+            <select id="payment-method" name="paymentMethod" required>
+                <option value="">Выберите метод</option>
+                <option value="card">Банковская карта</option>
+                <option value="webpay">WebPay</option>
+                <option value="paypal">PayPal</option>
+            </select>
+
+            <div id="card-number-field" class="hidden">
+                <label for="card-number">Номер карты</label>
+                <input type="text" id="card-number" name="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+            </div>
+
+            <button type="submit" class="top-up-btn">Пополнить</button>
+        </form>
+    </div>
+</main>
+
+<script>
+    const paymentSelect = document.getElementById('payment-method');
+    const cardField = document.getElementById('card-number-field');
+
+    paymentSelect.addEventListener('change', () => {
+        if (paymentSelect.value === 'card') {
+            cardField.classList.remove('hidden');
+        } else {
+            cardField.classList.add('hidden');
+        }
+    });
+
+
+    document.getElementById('card-number').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+        e.target.value = value;
+    });
+</script>
+</body>
+</html>

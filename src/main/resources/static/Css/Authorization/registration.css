@@ -1,0 +1,242 @@
+/* Сброс box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Фоновая часть */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2940&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #333;
+}
+
+/* Полупрозрачный слой */
+.background-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+}
+
+/* Контейнер формы */
+.register-container {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Заголовки */
+.register-header h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.register-header p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+/* Кнопки соц.сетей */
+.social-register {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.social-button {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Разделитель */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+}
+
+.divider::before {
+    margin-right: 10px;
+}
+
+.divider::after {
+    margin-left: 10px;
+}
+
+/* Форма регистрации */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Поля ввода */
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.95em;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.95em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #4e38b2;
+    box-shadow: 0 0 0 3px rgba(78, 56, 178, 0.2);
+    outline: none;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Чекбокс */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-top: 2px;
+    accent-color: #4e38b2;
+}
+
+.checkbox-group label {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.terms-link {
+    color: #4e38b2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка отправки */
+.submit-button {
+    margin-top: 10px;
+    padding: 12px;
+    background: #4e38b2;
+    color: white;
+    font-size: 1.05em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 5px 12px rgba(78, 56, 178, 0.3);
+}
+
+.submit-button:hover {
+    background-color: #3c2a9a;
+    transform: translateY(-2px);
+}
+
+/* Ссылка на вход */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.login-link a {
+    color: #4e38b2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 500px) {
+    .register-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .social-register {
+        flex-direction: column;
+    }
+}
