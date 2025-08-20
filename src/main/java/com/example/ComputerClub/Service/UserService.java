@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,10 +20,13 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
     private final UserRepository authorizationDbo;
     private final PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+
     @Autowired
-    public UserService(UserRepository authorizationDbo, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository authorizationDbo, PasswordEncoder passwordEncoder, UserRepository userRepository) {
         this.authorizationDbo = authorizationDbo;
         this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     public User registerNewUser(User user) {
@@ -52,6 +56,19 @@ public class UserService implements UserDetailsService {
                 user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority(user.getRole().getRoleName()))
         );
+    }
+
+    @Transactional
+    public void replenishment(User user, double amount) {
+        user.setWallet(user.getWallet() + amount);
+        userRepository.save(user);
+    }
+
+    public void editProfile(User user, String login, String email, String fullName) {
+        user.setLogin(login);
+        user.setEmail(email);
+        user.setFullName(fullName);
+        userRepository.save(user);
     }
 
     public List<User> getUsers() {return authorizationDbo.findAll();}

@@ -54,7 +54,7 @@
         <p>Ваша новая игровая реальность начинается здесь. Мощные ПК, лучшие игры и идеальная атмосфера.</p>
         <div class="hero-buttons">
             <a href="#pricing" class="btn btn-primary btn-large">Наши тарифы</a>
-            <a href="#contact" class="btn btn-secondary btn-large">Забронировать</a>
+            <a th:href="@{/booking}" class="btn btn-secondary btn-large">Забронировать</a>
         </div>
     </div>
 </section>
@@ -192,13 +192,13 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <h3>Наши Контакты</h3>
-                <p><i class="fas fa-map-marker-alt"></i> г. Ваш Город, ул. Примерная, 10</p>
-                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                <p><i class="fas fa-map-marker-alt"></i> г. Минск, ул. Слободская, 15</p>
+                <p><i class="fas fa-phone"></i> +375 44 579-75-X15</p>
                 <p><i class="fas fa-envelope"></i> info@cyberarena.com</p>
                 <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-vk"></i></a>
+                    <a href="https://vk.com/dinooozaaauric"><i class="fab fa-vk"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/malinovvvvskaya"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="contact-form">
@@ -208,7 +208,7 @@
                         <input type="text" id="name" name="name" placeholder="Ваше Имя" required />
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Ваш Email" required />
+                        <input type="email" id="email" name="email" placeholder="Ваш Email"required />
                     </div>
                     <div class="form-group">
                         <textarea id="message" name="message" rows="5" placeholder="Ваше сообщение" required></textarea>

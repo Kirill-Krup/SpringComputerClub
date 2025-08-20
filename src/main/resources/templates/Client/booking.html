@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Бронирование места — Кибер Арена</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/Css/Client/booking.css"/>
+</head>
+<body>
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="/">
+                <i class="fas fa-gamepad"></i>
+                <span class="logo-accent">Кибер Арена</span>
+            </a>
+        </div>
+
+        <div class="main-nav-and-profile">
+            <nav class="main-nav">
+                <ul>
+                    <li><a th:href="@{/home}">Главная</a></li>
+                    <li><a th:href="@{/home#arena}">Арена</a></li>
+                    <li><a th:href="@{/home#pricing}">Тарифы</a></li>
+                    <li><a th:href="@{/home#contacts}">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <a th:href="@{/profile}">
+                    <div class="profile-container" title="Профиль пользователя">
+                        <div class="profile-text">
+                            <div class="profile-name" th:text="${user.getLogin()}"></div>
+                            <div class="profile-balance" th:text="${user.getWallet() + ' BYN'}"></div>
+                        </div>
+                        <img th:src="${user.getPhotoPath()  }" alt="Фото профиля" class="profile-photo" />
+                    </div>
+                </a>
+                <form th:action="@{/logout}" method="post" class="logout-form">
+                    <input type="hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">
+                    <button type="submit" class="logout-btn">Выйти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Контент -->
+<main class="booking">
+    <div class="container">
+        <div class="form-card">
+            <div class="form-card__head">
+                <h1><i class="fa-solid fa-chair"></i> Забронировать место</h1>
+                <p class="muted">Выберите день, время, ПК и тариф</p>
+            </div>
+
+            <form action="/booking" method="post" class="booking-form">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+
+                <section class="step">
+                    <h2><i class="fa-regular fa-calendar"></i> День и время</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="day">Дата начала <span class="req">*</span></label>
+                            <input type="date" id="day" name="day" class="small-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Время начала <span class="req">*</span></label>
+                            <input type="time" id="time" name="time" class="small-input" step="1800" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDay">Дата окончания <span class="req">*</span></label>
+                            <input type="date" id="endDay" name="endDay" class="small-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endTime">Время окончания <span class="req">*</span></label>
+                            <input type="time" id="endTime" name="endTime" class="small-input" step="1800" required>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Секция с этажами -->
+                <section class="step">
+                    <h2><i class="fa-solid fa-desktop"></i> Выберите место</h2>
+                    <div class="floor-segment">
+                        <div class="floor-segment__track" id="floorSegment" role="tablist" aria-label="Этаж">
+                            <button type="button" class="floor-segment__btn" data-floor="0">Этаж 0</button>
+                            <button type="button" class="floor-segment__btn" data-floor="1">Этаж 1</button>
+                            <button type="button" class="floor-segment__btn" data-floor="2">Этаж 2</button>
+                            <span class="floor-segment__indicator" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <!-- ЭТАЖ 0 -->
+                    <div class="floor" data-floor = "0">
+                        <div class="layout-container">
+                            <div class="left-side">
+                                <div class="left-top">
+                                    <div class="pc-row" style="margin-top: 150px; margin-left: 90px">
+                                        <button class="pc-seat">PS5 1</button>
+                                        <button class="pc-seat">PS5 2</button>
+                                        <button class="pc-seat">PS5 3</button>
+                                        <button class="pc-seat">PS5 4</button>
+                                    </div>
+                                    <div class="pc-column-row">
+                                    </div>
+                                </div>
+                                <div class="door-gap"></div>
+                                <div class="left-bottom">
+                                    <div class="pc-column-row" style="margin-top: 50px">
+                                        <button class="pc-seat">PS5 5</button>
+                                        <button class="pc-seat">PS5 6</button>
+                                        <button class="pc-seat">PS5 7</button>
+                                        <button class="pc-seat">PS5 8</button>
+                                    </div>
+                                    <div class="pc-row">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-side">
+                                <div class="stair">
+                                    <img src="/Images/stairsUp.png" alt="Лестница вверх">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЭТАЖ 1 -->
+                    <div class="floor active" data-floor = "1">
+                        <div class="layout-container">
+                            <div class="left-side">
+                                <div class="left-top">
+                                    <div class="pc-row">
+                                        <button class="pc-seat">ПК 1</button>
+                                        <button class="pc-seat">ПК 2</button>
+                                        <button class="pc-seat">ПК 3</button>
+                                        <button class="pc-seat">ПК 4</button>
+                                        <button class="pc-seat">ПК 5</button>
+                                        <button class="pc-seat">ПК 6</button>
+                                    </div>
+                                    <div class="pc-column-row" style="margin-top: 100px">
+                                        <button class="pc-seat">ПК 7</button>
+                                        <button class="pc-seat">ПК 8</button>
+                                        <button class="pc-seat">ПК 9</button>
+                                        <button class="pc-seat">ПК 10</button>
+                                    </div>
+                                </div>
+                                <div class="door-gap"></div>
+                                <div class="left-bottom">
+                                    <div class="pc-column-row" style="margin-top: 60px">
+                                        <button class="pc-seat">ПК 11</button>
+                                        <button class="pc-seat">ПК 12</button>
+                                        <button class="pc-seat">ПК 13</button>
+                                        <button class="pc-seat">ПК 14</button>
+                                    </div>
+                                    <div class="pc-row" style="margin-top: 100px">
+                                        <button class="pc-seat">ПК 15</button>
+                                        <button class="pc-seat">ПК 16</button>
+                                        <button class="pc-seat">ПК 17</button>
+                                        <button class="pc-seat">ПК 18</button>
+                                        <button class="pc-seat">ПК 19</button>
+                                        <button class="pc-seat">ПК 20</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right-side">
+                                <div class="stairs">
+                                    <img src="/Images/stairsUp.png" alt="Лестница вверх">
+                                    <img src="/Images/stairsDown.png" alt="Лестница вниз">
+                                </div>
+                                <div class="enter">Вход</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ЭТАЖ 2 -->
+                    <div class="floor" data-floor = "2">
+                        <div class="layout-container">
+                            <div class="left-side">
+                                <div class="left-top" style="display: flex; gap: 10px">
+                                    <div class="left-in-left-top">
+                                        <button class="vip">VIP 1(ПК)</button>
+                                    </div>
+                                    <div class="right-in-left-top">
+                                        <button class="vip">VIP 2(ПК + PS5)</button>
+                                    </div>
+                                </div>
+                                <div class="door-gap"></div>
+                                <div class="left-bottom">
+                                    <button class="vip" style="height: 80%;margin-top: 55px">VIP 3 (5 ПК + 2 PS5)</button>
+                                </div>
+                            </div>
+                            <div class="right-side">
+                                <div class="stair">
+                                    <img src="/Images/stairsDown.png" alt="Лестница вниз">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Секция с тарифами -->
+                <section class="step">
+                    <h2><i class="fa-solid fa-wallet"></i> Тариф</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="tariff">Выберите тариф <span class="req">*</span></label>
+                            <select id="tariff" name="tariff" required>
+                                <option value="">-- выберите тариф --</option>
+                                <option value="hour">Поминутный (почасовой)</option>
+                                <option value="day">Дневной</option>
+                                <option value="night">Ночной</option>
+                                <option value="vip">VIP-зона</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedPc" name="pc"/>
+                </section>
+
+                <!-- действия -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-check"></i> Забронировать
+                    </button>
+                    <a href="/" class="btn-ghost"><i class="fa-regular fa-circle-left"></i> Назад</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p class="muted">© Кибер Арена, 2025</p>
+    </div>
+</footer>
+
+<script>
+    const dateInput = document.getElementById('day');
+    const timeInput = document.getElementById('time');
+    const endDateInput = document.getElementById('endDay');
+    const endTimeInput = document.getElementById('endTime');
+
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate() + 14);
+
+    const toISO = (d) => d.toISOString().split('T')[0];
+
+    dateInput.min = toISO(today);
+    dateInput.max = toISO(maxDate);
+
+    function updateEndDateLimits() {
+        if (!dateInput.value) return;
+
+        const startDate = new Date(dateInput.value);
+
+        const minEnd = new Date(startDate);
+        minEnd.setDate(startDate.getDate());
+
+        const maxEnd = new Date(startDate);
+        maxEnd.setDate(startDate.getDate() + 15); // максимум +15 дней
+
+        endDateInput.min = toISO(minEnd);
+        endDateInput.max = toISO(maxEnd);
+
+        if (endDateInput.value && (endDateInput.value < endDateInput.min || endDateInput.value > endDateInput.max)) {
+            endDateInput.value = "";
+        }
+    }
+
+    dateInput.addEventListener("change", updateEndDateLimits);
+
+    if (dateInput.showPicker) {
+        dateInput.addEventListener("click", () => dateInput.showPicker());
+    }
+    if (timeInput.showPicker) {
+        timeInput.addEventListener("click", () => timeInput.showPicker());
+    }
+    if (endDateInput.showPicker) {
+        endDateInput.addEventListener("click", () => endDateInput.showPicker());
+    }
+    if (endTimeInput.showPicker) {
+        endTimeInput.addEventListener("click", () => endTimeInput.showPicker());
+    }
+
+    endTimeInput.addEventListener("change", () => {
+        const startDate = dateInput.value;
+        const endDate = endDateInput.value;
+        const startTime = timeInput.value;
+        const endTime = endTimeInput.value;
+
+        if (endDate === startDate) {
+            if (endTime <= startTime) {
+                const d = new Date(startDate);
+                d.setDate(d.getDate() + 1);
+                endDateInput.value = d.toISOString().split("T")[0];
+            }
+        }
+    });
+
+    const steps = document.querySelectorAll("section.step");
+
+    function lockStep(step) {
+        step.style.opacity = "0.2";
+        step.style.pointerEvents = "none";
+    }
+
+    function unlockStep(step) {
+        step.style.opacity = "1";
+        step.style.pointerEvents = "auto";
+    }
+
+    steps.forEach((s, i) => {
+        if (i > 0) lockStep(s);
+    });
+
+
+    function checkStep1() {
+        const day = document.getElementById("day").value;
+        const time = document.getElementById("time").value;
+        const endDay = document.getElementById("endDay").value;
+        const endTime = document.getElementById("endTime").value;
+
+        if (day && time && endDay && endTime) {
+            unlockStep(steps[1]);
+        } else {
+            lockStep(steps[1]);
+            lockStep(steps[2]);
+        }
+    }
+
+    function checkStep2() {
+        const pc = document.getElementById("selectedPc").value;
+        if (pc) {
+            unlockStep(steps[2]);
+        } else {
+            lockStep(steps[2]);
+        }
+    }
+
+    ["day", "time", "endDay", "endTime"].forEach(id => {
+        document.getElementById(id).addEventListener("input", checkStep1);
+    });
+
+    document.querySelectorAll(".pc-seat").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".pc-seat").forEach(b => b.classList.remove("selected"));
+
+            btn.classList.add("selected");
+            document.getElementById("selectedPc").value = btn.textContent.trim();
+
+            checkStep2();
+        });
+    });
+
+
+    checkStep1();
+    checkStep2();
+
+
+    const segment = document.getElementById('floorSegment');
+    const indicator = segment.querySelector('.floor-segment__indicator');
+    const segButtons = Array.from(segment.querySelectorAll('.floor-segment__btn'));
+    const floorViews = Array.from(document.querySelectorAll('.floor'));
+
+    function setActiveFloor(floorIdx) {
+        segButtons.forEach((b) => {
+            const isActive = Number(b.dataset.floor) === floorIdx;
+            b.classList.toggle('is-active', isActive);
+            b.setAttribute('aria-selected', String(isActive));
+        });
+
+        indicator.style.transform = `translateX(${floorIdx * 100}%)`;
+
+        floorViews.forEach((v) => v.classList.toggle('active', Number(v.dataset.floor) === floorIdx));
+    }
+
+    segButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            setActiveFloor(Number(btn.dataset.floor));
+        });
+    });
+    setActiveFloor(2);
+
+
+    function roundTimeTo30Minutes(timeString) {
+        if (!timeString) return '';
+
+        const [hours, minutes] = timeString.split(':').map(Number);
+        const roundedMinutes = minutes < 30 ? 0 : 30;
+        return `${hours.toString().padStart(2, '0')}:${roundedMinutes.toString().padStart(2, '0')}`;
+    }
+
+
+    document.getElementById('time').addEventListener('change', function() {
+        this.value = roundTimeTo30Minutes(this.value);
+        checkStep1();
+    });
+
+    document.getElementById('endTime').addEventListener('change', function() {
+        this.value = roundTimeTo30Minutes(this.value);
+        checkStep1();
+    });
+
+    document.getElementById('time').addEventListener('blur', function() {
+        if (this.value) {
+            this.value = roundTimeTo30Minutes(this.value);
+            checkStep1();
+        }
+    });
+
+    document.getElementById('endTime').addEventListener('blur', function() {
+        if (this.value) {
+            this.value = roundTimeTo30Minutes(this.value);
+            checkStep1();
+        }
+    });
+</script>
+
+
+</body>
+</html>

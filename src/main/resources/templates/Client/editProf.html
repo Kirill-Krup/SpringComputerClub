@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Редактирование профиля — Кибер Арена</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <link rel="stylesheet" href="/Css/Client/editProf.css"/>
+</head>
+<body>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a href="/profile">
+        <i class="fas fa-gamepad"></i>
+        <span class="logo-accent">Кибер Арена</span>
+      </a>
+    </div>
+
+    <div class="main-nav-and-profile">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Главная</a></li>
+          <li><a href="/arena">Арена</a></li>
+          <li><a href="/pricing">Тарифы</a></li>
+          <li><a href="/contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="profile-mini">
+        <a class="btn-outline" href="/profile"><i class="fa-regular fa-user"></i> Профиль</a>
+        <form action="/logout" method="post" class="logout-inline">
+           <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+          <button type="submit" class="btn-outline danger"><i class="fa-solid fa-right-from-bracket"></i> Выход</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Контент -->
+<main class="profile-edit">
+  <div class="container">
+    <div class="form-card">
+      <div class="form-card__head">
+        <h1><i class="fa-regular fa-pen-to-square"></i> Редактирование профиля</h1>
+        <p class="muted">Измени логин, имя и телефон. Поля с <span class="req">*</span> обязательны.</p>
+      </div>
+
+      <form action="/profile/edit" method="post" class="edit-form" autocomplete="on">
+         <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="username">Логин <span class="req">*</span></label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-at input-icon"></i>
+              <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="Ваш логин"
+                      minlength="3"
+                      maxlength="32"
+                      required
+                      value=""
+                      th:value="${user.getLogin()}"
+              />
+            </div>
+            <small class="hint">3–32 символа, латиница/цифры/._-</small>
+          </div>
+
+          <div class="form-group">
+            <label for="fullName">Имя <span class="req">*</span></label>
+            <div class="input-wrap">
+              <i class="fa-regular fa-user input-icon"></i>
+              <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      placeholder="Ваше имя"
+                      minlength="2"
+                      maxlength="64"
+                      required
+                      value=""
+                      th:value="${user.getFullName()}"
+              />
+            </div>
+            <small class="hint">Можно указывать имя и фамилию.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Телефон <span class="req">*</span></label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-phone input-icon"></i>
+              <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="+1 (555) 123-45-67"
+                      inputmode="tel"
+                      pattern="^\+?[0-9 ()\-]{7,20}$"
+                      required
+                      value=""
+                      th:value="${user.getPhone()}"
+              />
+            </div>
+            <small class="hint">Формат: +375 ** ***-**-**.</small>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">
+            <i class="fa-regular fa-floppy-disk"></i> Сохранить изменения
+          </button>
+          <a href="/profile" class="btn-ghost">
+            <i class="fa-regular fa-circle-left"></i> Отмена
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="muted">© Кибер Арена, 2025</p>
+  </div>
+</footer>
+</body>
+</html>
