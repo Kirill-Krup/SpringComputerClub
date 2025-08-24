@@ -58,6 +58,10 @@ body {
     margin-top: 24px;
 }
 
+#step {
+    margin-top: 24px;
+}
+
 .step h2 {
     font-size: 18px;
     margin-bottom: 12px;
@@ -423,6 +427,12 @@ input:focus, select:focus {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
+.pc-seat.reserved, .vip.reserved{
+    background: var(--danger, #ff5a5f);
+    color: #fff;
+    cursor: not-allowed;
+}
+
 .muted {
     color: #999;
 }
@@ -512,4 +522,87 @@ input:focus, select:focus {
     transform: translateY(0);
 }
 
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.pricing-card {
+    background-color: #1a1a2e;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, scale 0.3s ease;
+    border: 2px solid #333;
+}
+
+.pricing-card.featured {
+    border-color: #e94560;
+    background-color: #1d2b4f;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-card.featured .price {
+    color: #e94560;
+}
+
+.pricing-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #f0f0f0;
+}
+
+.pricing-card .price {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #533483;
+    margin-bottom: 30px;
+}
+
+.pricing-card .price span {
+    font-size: 1.2em; /* Размер самой цены */
+}
+
+.pricing-card ul {
+    margin-bottom: 30px;
+}
+
+.pricing-card ul li {
+    font-size: 1.0em;
+    margin-bottom: 10px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pricing-card ul li i {
+    color: #28a745; /* Зеленый для галочки */
+}
+
+.pricing-card ul li.unavailable {
+    color: #777; /* Серый для недоступных опций */
+    text-decoration: line-through;
+}
+
+.pricing-card ul li.unavailable i {
+    color: #dc3545; /* Красный для крестика */
+}
+
+.section-dark {
+    background-color: #16213e;
+}
+
+.pricing-card:hover{
+    scale: 1.05;
+}
+
+.pricing-card.active{
+    scale: 0.95;
+}
 

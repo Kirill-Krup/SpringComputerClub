@@ -56,6 +56,8 @@
             </div>
 
             <form action="/booking" method="post" class="booking-form">
+                <input type="hidden" id="selectedPc" name="selectedPc">
+                <input type="hidden" id="selectedPlan" name="selectedPlan">
                 <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
 
                 <section class="step">
@@ -98,10 +100,10 @@
                             <div class="left-side">
                                 <div class="left-top">
                                     <div class="pc-row" style="margin-top: 150px; margin-left: 90px">
-                                        <button class="pc-seat">PS5 1</button>
-                                        <button class="pc-seat">PS5 2</button>
-                                        <button class="pc-seat">PS5 3</button>
-                                        <button class="pc-seat">PS5 4</button>
+                                        <button type="button">PS5 1</button>
+                                        <button type="button">PS5 2</button>
+                                        <button type="button">PS5 3</button>
+                                        <button type="button">PS5 4</button>
                                     </div>
                                     <div class="pc-column-row">
                                     </div>
@@ -109,10 +111,10 @@
                                 <div class="door-gap"></div>
                                 <div class="left-bottom">
                                     <div class="pc-column-row" style="margin-top: 50px">
-                                        <button class="pc-seat">PS5 5</button>
-                                        <button class="pc-seat">PS5 6</button>
-                                        <button class="pc-seat">PS5 7</button>
-                                        <button class="pc-seat">PS5 8</button>
+                                        <button type="button" class="pc-seat">PS5 5</button>
+                                        <button type="button" class="pc-seat">PS5 6</button>
+                                        <button type="button" class="pc-seat">PS5 7</button>
+                                        <button type="button" class="pc-seat">PS5 8</button>
                                     </div>
                                     <div class="pc-row">
 
@@ -133,35 +135,35 @@
                             <div class="left-side">
                                 <div class="left-top">
                                     <div class="pc-row">
-                                        <button class="pc-seat">ПК 1</button>
-                                        <button class="pc-seat">ПК 2</button>
-                                        <button class="pc-seat">ПК 3</button>
-                                        <button class="pc-seat">ПК 4</button>
-                                        <button class="pc-seat">ПК 5</button>
-                                        <button class="pc-seat">ПК 6</button>
+                                        <button type="button" class="pc-seat">ПК 1</button>
+                                        <button type="button" class="pc-seat">ПК 2</button>
+                                        <button type="button" class="pc-seat">ПК 3</button>
+                                        <button type="button" class="pc-seat">ПК 4</button>
+                                        <button type="button" class="pc-seat">ПК 5</button>
+                                        <button type="button" class="pc-seat">ПК 6</button>
                                     </div>
                                     <div class="pc-column-row" style="margin-top: 100px">
-                                        <button class="pc-seat">ПК 7</button>
-                                        <button class="pc-seat">ПК 8</button>
-                                        <button class="pc-seat">ПК 9</button>
-                                        <button class="pc-seat">ПК 10</button>
+                                        <button type="button" class="pc-seat">ПК 7</button>
+                                        <button type="button" class="pc-seat">ПК 8</button>
+                                        <button type="button" class="pc-seat">ПК 9</button>
+                                        <button type="button" class="pc-seat">ПК 10</button>
                                     </div>
                                 </div>
                                 <div class="door-gap"></div>
                                 <div class="left-bottom">
                                     <div class="pc-column-row" style="margin-top: 60px">
-                                        <button class="pc-seat">ПК 11</button>
-                                        <button class="pc-seat">ПК 12</button>
-                                        <button class="pc-seat">ПК 13</button>
-                                        <button class="pc-seat">ПК 14</button>
+                                        <button type="button" class="pc-seat">ПК 11</button>
+                                        <button type="button" class="pc-seat">ПК 12</button>
+                                        <button type="button" class="pc-seat">ПК 13</button>
+                                        <button type="button" class="pc-seat">ПК 14</button>
                                     </div>
                                     <div class="pc-row" style="margin-top: 100px">
-                                        <button class="pc-seat">ПК 15</button>
-                                        <button class="pc-seat">ПК 16</button>
-                                        <button class="pc-seat">ПК 17</button>
-                                        <button class="pc-seat">ПК 18</button>
-                                        <button class="pc-seat">ПК 19</button>
-                                        <button class="pc-seat">ПК 20</button>
+                                        <button type="button" class="pc-seat">ПК 15</button>
+                                        <button type="button" class="pc-seat">ПК 16</button>
+                                        <button type="button" class="pc-seat">ПК 17</button>
+                                        <button type="button" class="pc-seat">ПК 18</button>
+                                        <button type="button" class="pc-seat">ПК 19</button>
+                                        <button type="button" class="pc-seat">ПК 20</button>
                                     </div>
                                 </div>
                             </div>
@@ -180,15 +182,15 @@
                             <div class="left-side">
                                 <div class="left-top" style="display: flex; gap: 10px">
                                     <div class="left-in-left-top">
-                                        <button class="vip">VIP 1(ПК)</button>
+                                        <button type="button" class="vip">VIP 1(ПК)</button>
                                     </div>
                                     <div class="right-in-left-top">
-                                        <button class="vip">VIP 2(ПК + PS5)</button>
+                                        <button type="button" class="vip">VIP 2(ПК + PS5)</button>
                                     </div>
                                 </div>
                                 <div class="door-gap"></div>
                                 <div class="left-bottom">
-                                    <button class="vip" style="height: 80%;margin-top: 55px">VIP 3 (5 ПК + 2 PS5)</button>
+                                    <button type="button" class="vip" style="height: 80%;margin-top: 55px">VIP 3 (5 ПК + 2 PS5)</button>
                                 </div>
                             </div>
                             <div class="right-side">
@@ -203,20 +205,47 @@
 
                 <!-- Секция с тарифами -->
                 <section class="step">
-                    <h2><i class="fa-solid fa-wallet"></i> Тариф</h2>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="tariff">Выберите тариф <span class="req">*</span></label>
-                            <select id="tariff" name="tariff" required>
-                                <option value="">-- выберите тариф --</option>
-                                <option value="hour">Поминутный (почасовой)</option>
-                                <option value="day">Дневной</option>
-                                <option value="night">Ночной</option>
-                                <option value="vip">VIP-зона</option>
-                            </select>
+                    <div id="pricing">
+                        <div class="container">
+                            <h2 class="section-title">Наши <span class="accent">Тарифы</span></h2>
+                            <p class="section-subtitle">Выбирайте оптимальный вариант для вашего игрового опыта.</p>
+                            <div class="pricing-grid">
+                                <div class="pricing-card" data-plan="hourly" data-price="4">
+                                    <h3>Пакет "Час Игры"</h3>
+                                    <div class="price"><span>4</span> BYN/час</div>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Доступ к стандартным ПК</li>
+                                        <li><i class="fas fa-check"></i> Базовая периферия</li>
+                                        <li><i class="fas fa-check"></i> Широкий выбор игр</li>
+                                        <li class="unavailable"><i class="fas fa-times"></i> Приватная комната</li>
+                                        <li class="unavailable"><i class="fas fa-times"></i> Приоритетная поддержка</li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-card" data-plan="3hours" data-price="10">
+                                    <h3>Пакет "Кибер Атлет"</h3>
+                                    <div class="price"><span>10</span> BYN/3 часа</div>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Доступ к Premium ПК</li>
+                                        <li><i class="fas fa-check"></i> Pro периферия</li>
+                                        <li><i class="fas fa-check"></i> Приоритетная бронь</li>
+                                        <li><i class="fas fa-check"></i> Скидки в баре</li>
+                                        <li class="unavailable"><i class="fas fa-times"></i> Приватная комната</li>
+                                    </ul>
+                                </div>
+                                <div class="pricing-card" data-plan="VipArena" data-price="40">
+                                    <h3>Пакет "Командная Битва"</h3>
+                                    <div class="price"><span>40</span> BYN/3 часа</div>
+                                    <ul>
+                                        <li><i class="fas fa-check"></i> Приватная комната (5 ПК)</li>
+                                        <li><i class="fas fa-check"></i> Premium ПК и периферия</li>
+                                        <li><i class="fas fa-check"></i> Персональный менеджер</li>
+                                        <li><i class="fas fa-check"></i> 10% скидка на еду/напитки</li>
+                                        <li><i class="fas fa-check"></i> Приоритет в турнирах</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <input type="hidden" id="selectedPc" name="pc"/>
                 </section>
 
                 <!-- действия -->
@@ -254,7 +283,6 @@
 
     function updateEndDateLimits() {
         if (!dateInput.value) return;
-
         const startDate = new Date(dateInput.value);
 
         const minEnd = new Date(startDate);
@@ -325,6 +353,7 @@
         const endTime = document.getElementById("endTime").value;
 
         if (day && time && endDay && endTime) {
+            checkReservations(day,time,endDay,endTime);
             unlockStep(steps[1]);
         } else {
             lockStep(steps[1]);
@@ -333,11 +362,13 @@
     }
 
     function checkStep2() {
-        const pc = document.getElementById("selectedPc").value;
-        if (pc) {
-            unlockStep(steps[2]);
+        const sel = document.getElementById("selectedPc");
+        if (!sel) return;
+
+        if (sel.value) {
+            if (steps[2]) unlockStep(steps[2]);
         } else {
-            lockStep(steps[2]);
+            if (steps[2]) lockStep(steps[2]);
         }
     }
 
@@ -383,7 +414,7 @@
             setActiveFloor(Number(btn.dataset.floor));
         });
     });
-    setActiveFloor(2);
+    setActiveFloor(1);
 
 
     function roundTimeTo30Minutes(timeString) {
@@ -418,8 +449,130 @@
             checkStep1();
         }
     });
+
+    // ПРОВЕРКА ВЫБРАННОГО ТАРИФА
+    let selectedPlan = null;
+
+    document.querySelectorAll(".pricing-card").forEach(card => {
+        card.addEventListener("click", () => {
+            document.querySelectorAll(".pricing-card").forEach(c => c.classList.remove("featured"));
+            card.classList.add("featured");
+
+            selectedPlan = {
+                plan: card.dataset.plan,
+                price: card.dataset.price
+            };
+
+            console.log("Выбран тариф:", selectedPlan);
+        });
+    });
+
+    // ФУНКЦИИ СБОРА ДАННЫХ, ОТПРАВКИ, ВАЛИДАЦИИ И ТД
+    document.querySelector(".booking-form").addEventListener('submit', async function(e){
+       e.preventDefault();
+       const collectedData = collectData();
+       await sendBookingData(collectedData);
+    });
+
+    function collectData(){
+        const selectedPC = document.getElementById('selectedPc').value;
+        return{
+            startDate: dateInput.value, startTime: timeInput.value, endDate: endDateInput.value, endTime: endTimeInput.value,
+            reservationPlace: selectedPC, selectedTariff: selectedPlan ? selectedPlan.plan : null,
+            totalPrice: calculatePrice(dateInput.value, timeInput.value, endDateInput.value, endTimeInput.value, selectedPlan ? selectedPlan.price : null)
+        }
+    }
+
+    function calculatePrice(startDate, startTime, endDate, endTime, pricePerHour){
+        if(!pricePerHour) return '0';
+        const start = new Date(`${startDate}T${startTime}`);
+        const end = new Date(`${endDate}T${endTime}`);
+        const hours = (end-start) / (1000 * 60 * 60);
+        return hours * parseFloat(pricePerHour).toFixed(2)
+    }
+
+    async function sendBookingData(bookingData) {
+        try {
+            const submitBtn = document.querySelector('.btn-primary');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Отправка...';
+            submitBtn.disabled = true;
+
+            const response = await fetch('/booking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_csrf"]').value
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                showSuccessMessage('Бронирование успешно создано!');
+                setTimeout(() => {
+                    window.location.href = '/profile';
+                }, 2000);
+            } else {
+                const error = await response.json();
+                throw new Error(error.message || 'Ошибка сервера');
+            }
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+            showErrorMessage(error.message || 'Произошла ошибка при бронировании');
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+
+    function showSuccessMessage(message) {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-success';
+        alert.innerHTML = `
+        <i class="fa-solid fa-check-circle"></i>
+        ${message}
+    `;
+        document.body.appendChild(alert);
+
+        setTimeout(() => alert.remove(), 3000);
+    }
+
+    function showErrorMessage(message) {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-error';
+        alert.innerHTML = `
+        <i class="fa-solid fa-exclamation-circle"></i>
+        ${message}
+    `;
+        document.body.appendChild(alert);
+
+        setTimeout(() => alert.remove(), 5000);
+    }
+
+    async function checkReservations(startDate, startTime, endDate, endTime){
+        try{
+            const responce = await fetch(`/booking/getReservations?startDate=${startDate}&startTime=${startTime}&endDate=${endDate}&endTime=${endTime}`);
+            const reservations = await responce.json();
+
+            document.querySelectorAll(".pc-seat, .vip").forEach(btn=>{
+                btn.classList.remove("reserved");
+            });
+
+            reservations.forEach(element=>{
+                document.querySelectorAll(".pc-seat, .vip").forEach(btn=>{
+                    if(btn.textContent.trim() === element.reservationPlace){
+                        btn.classList.add("reserved");
+                    }
+                });
+            });
+        }catch(err){
+            console.log("Ошибка получения данных");
+        }
+    }
+
 </script>
-
-
 </body>
 </html>
